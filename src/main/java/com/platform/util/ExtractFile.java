@@ -2,14 +2,14 @@ package com.platform.util;
 
 public class ExtractFile {
     static{
-        String mdsPath=":/home/mi/project/slicePro/sliceapi/deploy/bin";
-        String qtPath=":/home/mi/software/Qt5.8/5.8/gcc_64/lib";
-        System.setProperty("java.library.path", System.getProperty("java.library.path")
-                +qtPath+ mdsPath);
+//        String mdsPath=":/home/mi/project/slicePro/sliceapi/deploy/bin";
+//        String qtPath=":/home/mi/software/Qt5.8/5.8/gcc_64/lib";
+//        System.setProperty("java.library.path", System.getProperty("java.library.path")
+//                +qtPath+ mdsPath);
         System.out.println(System.getProperty("java.library.path"));
         System.loadLibrary("mds");
     }
-    ExtractFile(String filePath)
+   public ExtractFile(String filePath)
     {
         CreateMDSFile(filePath);
     }
@@ -25,7 +25,7 @@ public class ExtractFile {
     public int TileHeight;
 
     public static void main(String[] args) {
-        ExtractFile newClass=new ExtractFile("data/1.mds");
+        ExtractFile newClass=new ExtractFile("/home/mi/project/slicePro/sliceapi/data/1.mds");
         System.out.println("maxLevel:"+newClass.maxLevel);
         System.out.println("ImageWidth:"+newClass.ImageWidth);
         System.out.println("ImageHeight:"+newClass.ImageHeight);
