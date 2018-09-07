@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
@@ -7,7 +7,6 @@
 <div id="openseadragon1" style="width: 800px; height: 600px;"></div>
 <script src="/openseadragon/openseadragon.min.js"></script>
 <script type="text/javascript">
- /*<![CDATA[*/
     var viewer = OpenSeadragon({
         id: "openseadragon1",
         tileSources:   {
@@ -20,7 +19,7 @@
             return url;
         }}
     });
-    /*]]>*/
+
 </script>
 </body>
 </html>
