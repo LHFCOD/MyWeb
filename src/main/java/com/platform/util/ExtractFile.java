@@ -2,10 +2,6 @@ package com.platform.util;
 
 public class ExtractFile {
     static{
-//        String mdsPath=":/home/mi/project/slicePro/sliceapi/deploy/bin";
-//        String qtPath=":/home/mi/software/Qt5.8/5.8/gcc_64/lib";
-//        System.setProperty("java.library.path", System.getProperty("java.library.path")
-//                +qtPath+ mdsPath);
         System.out.println(System.getProperty("java.library.path"));
         System.loadLibrary("mds");
     }

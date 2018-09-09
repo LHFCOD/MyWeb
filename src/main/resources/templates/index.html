@@ -18,11 +18,11 @@
     <script th:inline="javascript">
 /*<![CDATA[*/
 var app=angular.module("ngApp",[]);
-    app.controller("idCon",function($scope){
-    var list= [[${subjectNames}]]
-    $scope.subjectNames= list;
+    app.controller("subjectCon",function($scope){
+    $scope.subjectInfo= [[${subjectInfo}]];
     });
 /*]]>*/
+
 
     </script>
 </head>
@@ -30,20 +30,38 @@ var app=angular.module("ngApp",[]);
 <div class="container">
     <ul class="breadcrumb">
         <li><a href="#">首页</a></li>
-        <li class="active">手机</li>
+        <li class="active">科目</li>
     </ul>
-    <div class="row" ng-controller="idCon">
-        <div ng-repeat="chart in subjectNames" class="col-xs-2 grid effect-apollo">
-            <div class="thumbnail text-center">
-                <a>
-                    <img alt="{{chart.subjectName}}"/>
-                    <div class="figcaption">
-                        <p>主编：官思思</p>
+    <!-- gallery -->
+    <div id="gallery" class="gallery" ng-controller="subjectCon">
+        <div class="container">
+            <h3 class="agileits-title w3title1">科目</h3>
+            <div class="gallery-grids">
+                <div class="gallery-grid col-sm-4 col-md-2" ng-repeat="subject in subjectInfo">
+                    <div class="thumbnails grid text-center">
+                        <a>
+                            <img height="200" src="/subjects/{{subject.path}}/thumbnail.png" alt="{{subject.name}}"/>
+                            <div class="figcaption">
+                                <p>{{subject.name}}</p>
+                            </div>
+                        </a>
                     </div>
-                </a>
+                </div>
             </div>
         </div>
     </div>
+    <!--<div class="row" ng-controller="subjectCon">-->
+    <!--<div ng-repeat="subject in subjectInfo" class="col-xs-2 col-md-3 effect-apollo">-->
+    <!--<div class="thumbnails text-center">-->
+    <!--<a>-->
+    <!--<img height="200" style="display: block;" src="/subjects/{{subject.path}}/thumbnail.png" alt="{{subject.name}}"/>-->
+    <!--<div class="figcaption">-->
+    <!--<p>{{subject.name}}</p>-->
+    <!--</div>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
 </div>
 </body>
 </html>

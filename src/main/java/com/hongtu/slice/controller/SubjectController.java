@@ -1,5 +1,8 @@
 package com.hongtu.slice.controller;
 
+import com.hongtu.slice.db.client.DaoFactory;
+import com.hongtu.slice.db.client.DbFactory;
+import com.hongtu.slice.db.model.generated.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,15 +17,25 @@ import java.util.Map;
 
 @Controller
 public class SubjectController {
-    @RequestMapping(value = "/index",method = RequestMethod.GET)
-    public String index(ModelMap modelMap){
-        List<Map<String,String>> subjectNames=new ArrayList<Map<String, String>>();
-        for(int i=0;i<3;i++) {
-            Map<String ,String> map=new HashMap<String, String>();
-            map.put("subjectName","kemu");
-            subjectNames.add(map);
-        }
-        modelMap.addAttribute("subjectNames", subjectNames);
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String index(ModelMap modelMap) {
+        List<Map<String, String>> subjectInfo=getSubjectInfo();
+        modelMap.addAttribute("subjectInfo", subjectInfo);
         return "/index";
+    }
+
+    public List<Map<String, String>> getSubjectInfo() {
+        DaoFactory daoFactory = DbFactory.getInstance();
+        List<Subject> subjects = daoFactory.getSubjects();
+        List<Map<String, String>> subjectInfo = new ArrayList<Map<String, String>>();
+        for (Subject subject : subjects) {
+            Map<String, String> map = new HashMap<String, String>();
+            if (subject.getName() != null && subject.getAddress() != null) {
+                map.put("name", subject.getName());
+                map.put("path",subject.getAddress());
+                subjectInfo.add(map);
+            }
+        }
+        return subjectInfo;
     }
 }
