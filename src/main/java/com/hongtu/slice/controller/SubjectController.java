@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import java.util.Map;
 public class SubjectController {
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(ModelMap modelMap) {
-        List<Map<String, String>> subjectInfo=getSubjectInfo();
+        List<Map<String, String>> subjectInfo = getSubjectInfo();
         modelMap.addAttribute("subjectInfo", subjectInfo);
         return "/index";
     }
@@ -32,10 +33,15 @@ public class SubjectController {
             Map<String, String> map = new HashMap<String, String>();
             if (subject.getName() != null && subject.getAddress() != null) {
                 map.put("name", subject.getName());
-                map.put("path",subject.getAddress());
+                map.put("path", subject.getAddress());
                 subjectInfo.add(map);
             }
         }
         return subjectInfo;
+    }
+
+    @RequestMapping(value = "/subject", method = RequestMethod.GET)
+    public String getTileSource(@RequestParam("id") Integer id) {
+        return "";
     }
 }

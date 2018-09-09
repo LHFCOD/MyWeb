@@ -3,7 +3,7 @@
 <mapper namespace="com.hongtu.slice.mapper.UserMapper">
 
     <!-- 查询网校的用户数目 -->
-    <select id="getAllSubject"  resultType="com.hongtu.slice.db.model.generated.Subject">
-        SELECT * from tb_subject limit 10
+    <select id="getChapterByPid" parameterType="Int"  resultType="com.hongtu.slice.db.model.generated.Chapter">
+        SELECT * from tb_catalog where pid= #{pid}
     </select>
 </mapper>
