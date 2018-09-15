@@ -1,0 +1,3 @@
+[submodule "sliceapi"]
+	path = sliceapi
+	url = git@github.com:LHFCOD/sliceapi

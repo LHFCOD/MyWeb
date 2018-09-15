@@ -22,7 +22,7 @@ public class SubjectController {
     public String index(ModelMap modelMap) {
         List<Map<String, String>> subjectInfo = getSubjectInfo();
         modelMap.addAttribute("subjectInfo", subjectInfo);
-        return "/index";
+        return "index";
     }
 
     public List<Map<String, String>> getSubjectInfo() {
